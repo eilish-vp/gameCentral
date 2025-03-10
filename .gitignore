@@ -1,0 +1,10 @@
+# Godot 4+ specific ignores
+.godot/
+
+*.import
+*.bin
+*.pck
+*.apk
+*.zip
+export_presets.cfg
+export.cfg
