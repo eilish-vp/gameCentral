@@ -63,3 +63,28 @@ func check_win():
 			break
 	if is_draw:
 		end_game("Draw")
+
+func end_game(winner):
+
+	gameOver = true
+	print("Game Over! Winner: ", winner)
+	# Add UI to display winner (e.g., a Label node)
+
+func ai_move():
+	
+	var emptyCells = []
+	for i in range(3):
+		for j in range(3):
+			if board[i][j] == null:
+				emptyCells.append([i, j])
+	if emptyCells.size() > 0:
+		var randIndex = randi() % emptyCells.size()
+		var cell = emptyCells[randIndex]
+		board[cell[0]][cell[1]] = "O"
+		var buttonIndex = cell[0] * 3 + cell[1]
+		var button = get_child(1).get_child(buttonIndex)
+		button.text = "O"
+		button.disabled = true
+		check_win()
+		if not gameOver:
+			currentPlayer = "X"
